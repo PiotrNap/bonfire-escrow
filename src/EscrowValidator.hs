@@ -14,15 +14,15 @@ import PlutusTx (makeIsDataIndexed, makeLift)
 data EscrowRedeemer = Close | Refund
 
 data EscrowDatum = EscrowDatum
-  { organizerAddr :: Address,
-    eventDate :: Integer,
-    bookedAt :: Integer
+  { organizerAddr :: !Address,
+    eventDate :: !POSIXTime,
+    bookedAt :: !POSIXTime
   }
   deriving (Show, Eq)
 
 data EscrowProvider = EscrowProvider
-  { pkHash :: PubKeyHash,
-    addr :: Address
+  { pkHash :: !PaymentPubKeyHash,
+    addr :: !Address
   }
   deriving (Show, Eq)
 
